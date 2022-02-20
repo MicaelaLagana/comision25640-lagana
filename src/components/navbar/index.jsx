@@ -11,7 +11,7 @@ return (
   <>
     <Navbar bg="dark" variant="dark" sticky="top">
     <Container>
-    <Navbar.Brand href="#home" onClick={() => handleOnClick('Logo')}>Logo</Navbar.Brand>
+    <Navbar.Brand href="#home" onClick={() => handleOnClick('Logo')}>Sinnarn</Navbar.Brand>
     <Nav className="me-auto">
       <Nav.Link href="#products" onClick={() => handleOnClick('Productos')}>Productos</Nav.Link>
       <Nav.Link href="#us" onClick={() => handleOnClick('Nosotros')}>Nosotros</Nav.Link>
