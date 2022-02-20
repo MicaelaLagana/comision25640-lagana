@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar, Nav, Container } from 'react-bootstrap';
+import CartWidget from "../cartWidget";
 
 export default function NavbarComponent() {
 
@@ -17,6 +18,7 @@ return (
       <Nav.Link href="#us" onClick={() => handleOnClick('Nosotros')}>Nosotros</Nav.Link>
       <Nav.Link href="#contactus" onClick={() => handleOnClick('Contacto')}>Contacto</Nav.Link>
     </Nav>
+    <CartWidget />
     </Container>
   </Navbar>
   </>
