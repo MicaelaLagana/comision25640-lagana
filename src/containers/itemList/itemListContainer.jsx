@@ -1,6 +1,7 @@
 import { React, useState } from "react";
-import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Card, ListGroup, ListGroupItem, Row } from "react-bootstrap";
 import Holder from '../../components/assets/images/imageholder.png'
+import ItemCount from "../../components/itemCount/itemCount";
 
 export default function ItemListContainer(props) {
     const [greeting, setGreeting] = useState("");
@@ -30,6 +31,7 @@ return (
     <Card.Body>
         <Card.Link href="#" onClick={() => handleOnClick()}>greeting</Card.Link>
         <Card.Link href="#" onClick={() => handleOnClickTitle()}>title</Card.Link>
+        <Row><ItemCount initial={1} stock={7}/></Row>
     </Card.Body>
     </Card>
   );

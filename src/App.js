@@ -1,7 +1,7 @@
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import './App.css';
-import NavbarComponent from './components/navbar';
-import ItemListContainer from './containers/itemList';
+import NavbarComponent from './components/navbar/navbar';
+import ItemListContainer from './containers/itemList/itemListContainer';
 
 const greeting = "Holis! :)"
 const greeting2 = "Hello! :)"
