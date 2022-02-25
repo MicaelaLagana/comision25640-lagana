@@ -2,26 +2,40 @@ import { React, useState } from 'react'
 import { Row } from 'react-bootstrap';
 import ButtonCounter from '../buttonCounter/buttonCounter';
 import ButtonCart from '../buttonCart/buttonCart';
-import { Alert } from 'react-bootstrap';
+import { Alert, Col } from 'react-bootstrap';
 
 export default function ItemCount(props) {
-    let count = props.initial ? props.initial : 1;
-    const [counter, setCounter] = useState(count);
-    const [available, setAvailable] = useState(true); //Esto no va a grisar el producto, va a grisar el botón de + o -
+    const [counter, setCounter] = useState(props.initial);
+    const [disabledAdd, setDisabledAdd] = useState(false);
+    const [disabledSubs, setDisabledSubs] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
-    let stock = props.stock ? props.stock : 1;
-
     
     const handleOnClickAdd = () => {
-      console.log("a");
-        count !== stock ?  setCounter(count++) : setAvailable(false);
+
+        if (counter === props.stock) {
+          setDisabledAdd(true);
+          setDisabledSubs(false);
+        } else {
+          setCounter(counter + 1);
+        }
+
+        if (counter > 1) {
+          setDisabledSubs(false);
+        }
+        setShowAlert(false);
     }
      
     function handleOnClickSubs() {
-      console.log("b");
-      count !== props.initial ? setCounter(count--) : setAvailable(false)  ;
+      if (counter === props.initial) {
+        setDisabledSubs(true);
+      } else {
+        setCounter(counter - 1);
+      } 
+      if (counter < props.stock) {
+        setDisabledAdd(false);
+      }
+      setShowAlert(false);
     }
-    console.log("count", count)
     console.log("counter", counter)
 
     function onAdd() {
@@ -33,14 +47,14 @@ export default function ItemCount(props) {
   return (
     <Row>
         <Row>
-          <ButtonCounter onClick={() => handleOnClickAdd()} name={"+"} isAvaiable ={available}/> 
-          <h2>{counter}</h2>
-          <ButtonCounter onClick={() => handleOnClickSubs()} name={"-"} isAvaiable ={available}/> 
+          <ButtonCounter onClick={handleOnClickAdd} name={"+"} isDisabled ={disabledAdd}/> 
+          <Col><h2>{counter}</h2></Col>
+          <ButtonCounter onClick={handleOnClickSubs} name={"-"} isDisabled ={disabledSubs}/> 
         </Row>
         <Row><ButtonCart name={"Agregar al carrito"} onAdd={onAdd} /></Row>
-        { showAlert ? //Esto tengo que pasarlo a la pantalla principal 
+        { showAlert ? 
         <Alert variant={'success'}>
-        ¡Se han agregado {count} productos al carrito!
+        ¡Se han agregado {counter} productos al carrito!
         </Alert>
         :
           ""
