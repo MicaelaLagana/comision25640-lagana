@@ -1,4 +1,4 @@
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import './App.css';
 import NavbarComponent from './components/navbar';
 import ItemListContainer from './containers/itemList';
