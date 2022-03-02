@@ -3,19 +3,13 @@ import './App.css';
 import NavbarComponent from './components/navbar/navbar';
 import ItemListContainer from './containers/itemList/itemListContainer';
 
-const greeting = "Holis! :)"
-const greeting2 = "Hello! :)"
-const title1 = "title1 :)"
-const title2 = "title2 :)"
-
 function App() {
   return (
     <>
       <NavbarComponent />
       <Container>
         <Row className="justify-content-md-center">
-            <ItemListContainer greeting={greeting} title={title1}/>
-            <ItemListContainer greeting={greeting2} title={title2}/>
+            <ItemListContainer/>
         </Row>
       </Container>
     </>
