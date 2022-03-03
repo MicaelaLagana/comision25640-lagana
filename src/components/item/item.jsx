@@ -6,10 +6,10 @@ export default function ItemProduct(props) {
     const [price, setPrice] = useState("");
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
-    const [image, setImage] = useState("../../components/assets/images/imageholder.png");
+
 
     function handleOnClick() {
-        props.price ? setPrice(props.price) : setPrice("no hay saludo");
+        props.price ? setPrice(props.price) : setPrice("no hay precio");
     }
 
     
@@ -19,12 +19,13 @@ export default function ItemProduct(props) {
 
     useEffect(() => {
         setDescription(props.description);
-        setImage(props.image)
     }, [])
+
+    console.log(props.image)
 
 return (
     <Card style={{ width: '18rem' }} className='m-5 p-2'>
-    <Card.Img variant="top" src={image} />
+    <Card.Img variant="top" src={props.image} />
     <Card.Body>
         <Card.Title onClick={() => handleOnClick()}>{title}</Card.Title>
         <Card.Text>

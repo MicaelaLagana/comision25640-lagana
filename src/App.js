@@ -1,7 +1,7 @@
 import { Container, Row } from 'react-bootstrap';
 import './App.css';
 import NavbarComponent from './components/navbar/navbar';
-import ItemListContainer from './containers/itemList/itemListContainer';
+import ItemListContainer  from './containers/itemList/itemListContainer';
 
 function App() {
   return (

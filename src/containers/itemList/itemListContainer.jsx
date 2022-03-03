@@ -9,15 +9,15 @@ export default function ItemListContainer() {
 
     useEffect(() => {
         getFetch
-        .Then((response) => {
+        .then((response) => {
             setItems(response)
             return response
         })
-        .then((resp) => console.log(resp))
+        .then(() => setLoading(false))
         .catch(err => console.log(err))
-        .finally(() => setLoading(false))
     }, [])
     
+    console.log("loading? ", loading);
 
 return (
     <>
