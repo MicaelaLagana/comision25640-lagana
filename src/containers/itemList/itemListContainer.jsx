@@ -1,38 +1,33 @@
-import { React, useState } from "react";
-import { Card, ListGroup, ListGroupItem, Row } from "react-bootstrap";
-import Holder from '../../components/assets/images/imageholder.png'
-import ItemCount from "../../components/itemCount/itemCount";
+import { React, useState, useEffect } from "react";
+import ItemList from "../../components/itemList/itemList";
+import { getFetch } from "../../helpers/getFetch";
+import { Spinner } from 'react-bootstrap'
 
-export default function ItemListContainer(props) {
-    const [greeting, setGreeting] = useState("");
-    const [title, setTitle] = useState("")
+export default function ItemListContainer() {
+    const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    function handleOnClick() {
-        props.greeting ? setGreeting(props.greeting) : setGreeting("no hay saludo");
-    }
-
+    useEffect(() => {
+        getFetch
+        .then((response) => {
+            setItems(response)
+            return response
+        })
+        .then(() => setLoading(false))
+        .catch(err => console.log(err))
+    }, [])
     
-    function handleOnClickTitle() {
-        props.title ? setTitle(props.title) : setTitle("no hay titulo");
-    }
+    console.log("loading? ", loading);
 
 return (
-    <Card style={{ width: '18rem' }} className='m-5 p-2'>
-    <Card.Img variant="top" src={Holder} />
-    <Card.Body>
-        <Card.Title onClick={() => handleOnClick()}>{title}</Card.Title>
-        <Card.Text>
-        Producto ejemplo que será llenado con la descripción del mismo
-        </Card.Text>
-    </Card.Body>
-    <ListGroup className="list-group-flush">
-        <ListGroupItem>{greeting}</ListGroupItem>
-    </ListGroup>
-    <Card.Body>
-        <Card.Link href="#" onClick={() => handleOnClick()}>greeting</Card.Link>
-        <Card.Link href="#" onClick={() => handleOnClickTitle()}>title</Card.Link>
-        <Row><ItemCount initial={1} stock={7}/></Row>
-    </Card.Body>
-    </Card>
+    <>
+    { loading ? 
+        <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+        </Spinner>
+    :
+        <ItemList items={items}/>
+    }
+    </>
   );
 }
