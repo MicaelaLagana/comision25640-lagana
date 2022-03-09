@@ -16,8 +16,6 @@ export default function ItemListContainer() {
         .then(() => setLoading(false))
         .catch(err => console.log(err))
     }, [])
-    
-    console.log("loading? ", loading);
 
 return (
     <>
