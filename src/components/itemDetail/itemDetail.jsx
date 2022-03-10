@@ -4,6 +4,8 @@ import ItemCount from '../itemCount/itemCount'
 
 
 export default function ItemDetail(props) {
+
+    console.log("A ver por Apollo", props);
     const [description, setDescription] = useState("");
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");

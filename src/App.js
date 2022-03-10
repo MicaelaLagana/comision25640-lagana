@@ -1,7 +1,7 @@
 import { Container, Row } from 'react-bootstrap';
 import './App.css';
-import ItemDetail from './components/itemDetail/itemDetail';
 import NavbarComponent from './components/navbar/navbar';
+import ItemDetailConainer from './containers/itemDetail/itemDetailConainer';
 import ItemListContainer  from './containers/itemList/itemListContainer';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       <Container>
         <Row className="justify-content-md-center">
             <ItemListContainer/>
-            <ItemDetail/>
+            <ItemDetailConainer/>
         </Row>
       </Container>
     </>
