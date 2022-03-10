@@ -17,15 +17,3 @@ export const getFetch = new Promise((resolve, reject) => {
         reject("noppes");
     }
 })
-
-export const getFetchItem = new Promise((resolve, reject) => {
-    let itemID = 1;
-    if(itemID === 1){
-        console.log("Por que no andaaaaas :((((", productos[0]);
-        setTimeout(() => {
-            resolve(productos[0])
-        }, 2000);
-    } else {
-        reject("noppes");
-    }
-})

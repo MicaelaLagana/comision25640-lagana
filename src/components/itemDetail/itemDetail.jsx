@@ -4,32 +4,17 @@ import ItemCount from '../itemCount/itemCount'
 
 
 export default function ItemDetail(props) {
-
-    console.log("A ver por Apollo", props);
-    const [description, setDescription] = useState("");
-    const [title, setTitle] = useState("");
-    const [image, setImage] = useState("");
-    const [price, setPrice] = useState("");
-
-    useEffect(() => {
-        console.log(props);
-        setDescription(props.description);
-        setTitle(props.title);
-        setImage(props.image);
-        setPrice(props.price);
-    }, [])
-
   return (
     <Row>
-        <img src={image} alt=""/>
+        <img src={props.image} alt=""/>
         <Card>
-            <Card.Title as="h5">{title}</Card.Title>
+            <Card.Title as="h5">{props.title}</Card.Title>
             <Card.Body>
                 <Card.Text>
-                    {description}
+                    {props.description}
                 </Card.Text>
                 <Card.Text>
-                    {price}
+                    {props.price}
                 </Card.Text>
                 <Row><ItemCount initial={1} stock={7}/></Row>
             </Card.Body>

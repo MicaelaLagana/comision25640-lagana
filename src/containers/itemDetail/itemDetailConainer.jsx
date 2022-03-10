@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from 'react';
 import ItemDetail from '../../components/itemDetail/itemDetail';
-import { getFetchItem } from '../../helpers/getFetch';
+import { getFetch } from '../../helpers/getFetch';
 import { Spinner } from 'react-bootstrap';
 
 export default function ItemDetailConainer() {
@@ -8,16 +8,13 @@ export default function ItemDetailConainer() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-      getFetchItem
+      getFetch
       .then((response) => {
-        setItem(response)
-        return response
+      setItem(response[0])
     })
       .then(() => setLoading(false))
       .catch(err => console.log(err))
   }, [])
-    
-  console.log("ITEEEEEM", item);
 
   return (
     <>
