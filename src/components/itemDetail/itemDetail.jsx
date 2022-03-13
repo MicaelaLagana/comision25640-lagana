@@ -1,9 +1,10 @@
-import {React, useEffect, useState} from 'react'
+import {React} from 'react'
 import { Row, Card } from 'react-bootstrap'
 import ItemCount from '../itemCount/itemCount'
 
 
 export default function ItemDetail(props) {
+    console.log("props", props);
   return (
     <Row>
         <img src={props.image} alt=""/>
