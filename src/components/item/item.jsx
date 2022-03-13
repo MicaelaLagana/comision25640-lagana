@@ -21,8 +21,6 @@ export default function ItemProduct(props) {
         setDescription(props.description);
     }, [])
 
-    console.log(props.image)
-
 return (
     <Card style={{ width: '18rem' }} className='m-5 p-2'>
     <Card.Img variant="top" src={props.image} />
