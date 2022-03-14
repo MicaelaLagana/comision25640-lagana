@@ -1,10 +1,10 @@
 const productos=[
-    {id: 1, title: "título 1", description: "descripción 1", price: "price 1", image: "../assets/images/dados1.jpg"},
-    {id: 2, title: "título 2", description: "descripción 2", price: "price 2", image: "../assets/images/dados2.jpg"},
-    {id: 3, title: "título 3", description: "descripción 3", price: "price 3", image: "../assets/images/dados3.jpg"},
-    {id: 4, title: "título 4", description: "descripción 4", price: "price 4", image: "../assets/images/dados4.jpg"},
-    {id: 5, title: "título 5", description: "descripción 5", price: "price 5", image: "../assets/images/dados5.jpg"},
-    {id: 6, title: "título 6", description: "descripción 6", price: "price 6", image: "../assets/images/dados6.jpg"},
+    {id: 1, title: "Dados 1", description: "descripción 1", price: "$1.500", image: "/images/dados1.jpg", category: "dados"},
+    {id: 2, title: "Dados 2", description: "descripción 2", price: "$1.300", image: "/images/dados2.jpg", category: "dados"},
+    {id: 3, title: "Dados 3", description: "descripción 3", price: "$1.450", image: "/images/dados3.jpg", category: "dados"},
+    {id: 4, title: "Manual 4", description: "descripción 4", price: "$3.000", image: "/images/dados4.jpg", category: "manuales"},
+    {id: 5, title: "Manual 5", description: "descripción 5", price: "$6.000", image: "/images/dados5.jpg", category: "manuales"},
+    {id: 6, title: "Manual 6", description: "descripción 6", price: "$2.200", image: "/images/dados6.jpg", category: "manuales"},
 ]
 
 export const getFetch = new Promise((resolve, reject) => {

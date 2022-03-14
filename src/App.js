@@ -1,19 +1,22 @@
-import { Container, Row } from 'react-bootstrap';
 import './App.css';
 import NavbarComponent from './components/navbar/navbar';
 import ItemDetailConainer from './containers/itemDetail/itemDetailConainer';
 import ItemListContainer  from './containers/itemList/itemListContainer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import CartContainer from './containers/cartContainer/cartContainer';
 
 function App() {
   return (
     <>
-      <NavbarComponent />
-      <Container>
-        <Row className="justify-content-md-center">
-            <ItemListContainer/>
-            <ItemDetailConainer/>
-        </Row>
-      </Container>
+      <BrowserRouter>
+        <NavbarComponent />
+        <Routes>
+          <Route path="/" element={<ItemListContainer/>}/>
+          <Route path="/category/:id" element={<ItemListContainer/>}/>
+          <Route path="/item/:id" element={<ItemDetailConainer/>}/>
+          <Route path="/cart" element={<CartContainer/>}/>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

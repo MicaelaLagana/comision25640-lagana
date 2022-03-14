@@ -36,10 +36,8 @@ export default function ItemCount(props) {
       }
       setShowAlert(false);
     }
-    console.log("counter", counter)
 
     function onAdd() {
-      console.log("aleeert");
       setShowAlert(true);
     }
 
