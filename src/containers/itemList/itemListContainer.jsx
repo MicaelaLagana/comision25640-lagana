@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import ItemList from "../../components/itemList/itemList";
 import { getFetch } from "../../helpers/getFetch";
-import { Spinner } from 'react-bootstrap'
+import { Spinner, Row } from 'react-bootstrap'
 import { useParams } from "react-router-dom";
 
 export default function ItemListContainer() {
@@ -30,7 +30,7 @@ export default function ItemListContainer() {
     }, [id])
 
 return (
-    <>
+    <Row className="justify-content-center">
     { loading ? 
         <Spinner animation="border" role="status">
         <span className="visually-hidden">Loading...</span>
@@ -38,6 +38,6 @@ return (
     :
         <ItemList items={items}/>
     }
-    </>
+    </Row>
   );
 }

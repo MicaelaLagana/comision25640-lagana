@@ -17,20 +17,20 @@ export default function ItemProduct(props) {
     }, [])
 
 return (
-    <Card style={{ width: '18rem' }} className='m-5 p-2'>
+    <Card style={{ width: '18rem' }} className='m-5 p-2 justify-content-center'>
     <Card.Img variant="top" src={props.image} />
     <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text>
-        {description}
+            {description}
         </Card.Text>
     </Card.Body>
     <Card.Body>
         <Card.Text>{price}</Card.Text>
-        <Button onClick={handleOnClick}>Show Price</Button>
         <Link to={`/item/${props.id}`}>
             <Card.Link>Ver más</Card.Link>
         </Link>
+        <Button className="m-2" onClick={handleOnClick}>Show Price</Button>
         <Row><ItemCount initial={1} stock={7}/></Row>
     </Card.Body>
     </Card>
