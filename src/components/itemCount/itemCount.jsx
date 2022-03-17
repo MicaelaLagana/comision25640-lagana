@@ -3,12 +3,14 @@ import { Row } from 'react-bootstrap';
 import ButtonCounter from '../buttonCounter/buttonCounter';
 import ButtonCart from '../buttonCart/buttonCart';
 import { Alert, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function ItemCount(props) {
     const [counter, setCounter] = useState(props.initial);
     const [disabledAdd, setDisabledAdd] = useState(false);
     const [disabledSubs, setDisabledSubs] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
+    const [cartButton, setCartButton] = useState(false);
     
     const handleOnClickAdd = () => {
 
@@ -38,6 +40,7 @@ export default function ItemCount(props) {
     }
 
     function onAdd() {
+      setCartButton(true)
       setShowAlert(true);
     }
 
@@ -49,7 +52,14 @@ export default function ItemCount(props) {
           <Col><h2>{counter}</h2></Col>
           <ButtonCounter onClick={handleOnClickSubs} name={"-"} isDisabled ={disabledSubs}/> 
         </Row>
-        <Row><ButtonCart name={"Agregar al carrito"} onAdd={onAdd} /></Row>
+        {
+          cartButton ? 
+          <Link to="/cart">
+            <Row><ButtonCart name={"Ir al carrito"} /></Row>
+          </Link>
+          :
+          <Row><ButtonCart name={"Agregar al carrito"} onAdd={onAdd} /></Row>
+        }
         { showAlert ? 
         <Alert variant={'success'}>
         ¡Se han agregado {counter} productos al carrito!
