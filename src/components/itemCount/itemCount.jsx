@@ -1,5 +1,5 @@
 import { React, useState } from 'react'
-import { Row } from 'react-bootstrap';
+import { Row, Button } from 'react-bootstrap';
 import ButtonCounter from '../buttonCounter/buttonCounter';
 import ButtonCart from '../buttonCart/buttonCart';
 import { Alert, Col } from 'react-bootstrap';
@@ -10,7 +10,7 @@ export default function ItemCount(props) {
     const [disabledAdd, setDisabledAdd] = useState(false);
     const [disabledSubs, setDisabledSubs] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
-    const [cartButton, setCartButton] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
     
     const handleOnClickAdd = () => {
 
@@ -40,25 +40,27 @@ export default function ItemCount(props) {
     }
 
     function onAdd() {
-      setCartButton(true)
+      setIsVisible(true)
       setShowAlert(true);
     }
 
 
   return (
     <Row>
-        <Row>
-          <ButtonCounter onClick={handleOnClickAdd} name={"+"} isDisabled ={disabledAdd}/> 
-          <Col><h2>{counter}</h2></Col>
-          <ButtonCounter onClick={handleOnClickSubs} name={"-"} isDisabled ={disabledSubs}/> 
-        </Row>
         {
-          cartButton ? 
+          isVisible ? 
           <Link to="/cart">
-            <Row><ButtonCart name={"Ir al carrito"} /></Row>
+            <Row><Button>Ir al carrito</Button></Row>
           </Link>
           :
-          <Row><ButtonCart name={"Agregar al carrito"} onAdd={onAdd} /></Row>
+          <Row>
+            <Row>
+              <ButtonCounter onClick={handleOnClickAdd} name={"+"} isDisabled ={disabledAdd}/> 
+              <Col><h2>{counter}</h2></Col>
+              <ButtonCounter onClick={handleOnClickSubs} name={"-"} isDisabled ={disabledSubs}/> 
+            </Row>
+            <ButtonCart name={"Agregar al carrito"} onAdd={onAdd} />
+          </Row>
         }
         { showAlert ? 
         <Alert variant={'success'}>
