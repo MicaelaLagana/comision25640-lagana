@@ -4,6 +4,7 @@ import ButtonCounter from '../buttonCounter/buttonCounter';
 import ButtonCart from '../buttonCart/buttonCart';
 import { Alert, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useCartContext } from '../../context/cartContext';
 
 export default function ItemCount(props) {
     const [counter, setCounter] = useState(props.initial);
@@ -11,6 +12,8 @@ export default function ItemCount(props) {
     const [disabledSubs, setDisabledSubs] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
+
+    const { addToCart, isInCart } = useCartContext();
     
     const handleOnClickAdd = () => {
 
@@ -42,6 +45,9 @@ export default function ItemCount(props) {
     function onAdd() {
       setIsVisible(true)
       setShowAlert(true);
+      if (!isInCart(props.item.id)){
+        addToCart({...props.item, quantity: counter})
+      }
     }
 
 
