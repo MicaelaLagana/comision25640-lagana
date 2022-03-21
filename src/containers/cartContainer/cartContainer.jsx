@@ -4,7 +4,6 @@ import { Button } from 'react-bootstrap';
 
 export default function CartContainer() {
   const { cartList, clearCart, removeFromCart } = useCartContext();
-  console.log(cartList);
   return (
     <div>
       {cartList.map(item => <li><img src={item.image} alt="" height="50px" widht="50px"/> titulo: {item.title}, precio: {item.price}. descripción: {item.description}, cantidad: {item.quantity} <Button onClick={() => removeFromCart(item)}>Eliminar</Button> </li>)}

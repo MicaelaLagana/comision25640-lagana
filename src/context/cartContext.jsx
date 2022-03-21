@@ -24,7 +24,6 @@ export default function CartContextProvider({children}) {
     }
 
     const arrayRemove = (item) => {
-      console.log("item", item);
       var index = cartList.indexOf(item)
       if (index > -1) {
         cartList.splice(index, 1);
