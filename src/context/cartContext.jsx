@@ -8,11 +8,17 @@ export default function CartContextProvider({children}) {
     const [cartList, setCartList] = useState([]);
 
     const addToCart = (item) => {
+      if (!isInCart(item.id)) {
         setCartList([...cartList, item]);
+      }
     }
 
     const removeFromCart = (id) => {
-      arrayRemove(id);
+      var index = cartList.indexOf(id)
+      if (index > -1) {
+        cartList.splice(index, 1);
+      }
+      setCartList([...cartList]);
     }
 
     const clearCart = () => {
@@ -22,14 +28,6 @@ export default function CartContextProvider({children}) {
     const isInCart = (id) => {
       return cartList.find((item) => item.id === id)
     }
-
-    const arrayRemove = (item) => {
-      var index = cartList.indexOf(item)
-      if (index > -1) {
-        cartList.splice(index, 1);
-      }
-      setCartList([...cartList]);
-  }
 
 
   return (
