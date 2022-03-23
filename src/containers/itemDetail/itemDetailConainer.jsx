@@ -18,8 +18,6 @@ export default function ItemDetailConainer() {
       .catch(err => console.log(err))
   }, [])
 
-  console.log(item);
-
   return (
     <>
         { loading ? 
@@ -27,7 +25,7 @@ export default function ItemDetailConainer() {
         <span className="visually-hidden">Loading...</span>
         </Spinner>
         :
-        <ItemDetail title={item.title} price={item.price} image={item.image} description={item.description}/>
+        <ItemDetail id={item.id} title={item.title} price={item.price} image={item.image} description={item.description}/>
         }
     </>
   )

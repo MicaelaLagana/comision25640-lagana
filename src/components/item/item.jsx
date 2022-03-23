@@ -31,7 +31,7 @@ return (
             <Card.Link>Ver más</Card.Link>
         </Link>
         <Button className="m-2" onClick={handleOnClick}>Show Price</Button>
-        <Row><ItemCount initial={1} stock={7}/></Row>
+        <Row><ItemCount initial={1} stock={7} item={props}/></Row>
     </Card.Body>
     </Card>
   )
