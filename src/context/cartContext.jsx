@@ -6,9 +6,15 @@ export const useCartContext = () =>  useContext(CartContext);
 
 export default function CartContextProvider({children}) {
     const [cartList, setCartList] = useState([]);
+    const [cartCounter, setCartCounter] = useState(0)
+    const [total, setTotal] = useState(0)
 
     const addToCart = (item) => {
-      if (!isInCart(item.id)) {
+      let product = isInCart(item.id)
+      if (!product) {
+        let TotalPrice = item.price * item.quantity
+        setCartCounter(cartCounter + item.quantity)
+        setTotal(total + TotalPrice)
         setCartList([...cartList, item]);
       }
     }
@@ -16,13 +22,18 @@ export default function CartContextProvider({children}) {
     const removeFromCart = (id) => {
       var index = cartList.indexOf(id)
       if (index > -1) {
+        let TotalPrice = cartList[index].price * cartList[index].quantity
+        setCartCounter(cartCounter - cartList[index].quantity);
+        setTotal(total - TotalPrice);
         cartList.splice(index, 1);
       }
       setCartList([...cartList]);
     }
 
     const clearCart = () => {
+      setCartCounter(0);
       setCartList([]);
+      setTotal(0);
     }
 
     const isInCart = (id) => {
@@ -36,7 +47,9 @@ export default function CartContextProvider({children}) {
         addToCart,
         clearCart,
         removeFromCart,
-        isInCart
+        isInCart,
+        cartCounter,
+        total
     }}>
         {children}
     </CartContext.Provider>

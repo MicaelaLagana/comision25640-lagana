@@ -1,13 +1,30 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import { useCartContext } from '../../context/cartContext'
-import { Button } from 'react-bootstrap';
+import Cart from '../../components/cart/cart';
+import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 export default function CartContainer() {
   const { cartList, clearCart, removeFromCart } = useCartContext();
   return (
     <div>
-      {cartList.map(item => <li><img src={item.image} alt="" height="50px" widht="50px"/> titulo: {item.title}, precio: {item.price}. descripción: {item.description}, cantidad: {item.quantity} <Button onClick={() => removeFromCart(item)}>Eliminar</Button> </li>)}
-      <Button onClick={clearCart}>Vaciar carrito</Button>
+     {
+      cartList.length > 0 &&  
+      <div>
+        <Cart cartList={cartList} clearCart={clearCart} remove={removeFromCart}/>
+        <Button>Terminar compra</Button>
+      </div>
+     }
+
+    {
+      cartList.length === 0 &&  
+      <div>
+        <h1>Carrito vacío</h1>
+        <div>
+            <Link to="/"><Button>Home</Button></Link>
+        </div>
+      </div>
+     }
     </div>
   )
 }

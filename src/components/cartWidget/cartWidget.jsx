@@ -1,9 +1,14 @@
 import React from "react";
+import { useCartContext } from "../../context/cartContext";
 
 const size = "30px";
 
-export default function cartWidget() {
+export default function CartWidget() {
+  const { cartCounter } = useCartContext();
+
 return (
-    <img src="/images/carticon.png" alt="logo" width={size} height={size}/>
+  <div>
+    <img src="/images/carticon.png" alt="logo" width={size} height={size}/><p>{cartCounter > 0 && cartCounter}</p>
+  </div>
   );
 }
