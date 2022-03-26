@@ -45,9 +45,7 @@ export default function ItemCount(props) {
     function onAdd() {
       setIsVisible(true)
       setShowAlert(true);
-      if (!isInCart(props.item.id)){
-        addToCart({...props.item, quantity: counter})
-      }
+      addToCart({...props.item, quantity: counter})
     }
 
 

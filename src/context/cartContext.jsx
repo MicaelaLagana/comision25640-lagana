@@ -9,14 +9,27 @@ export default function CartContextProvider({children}) {
     const [cartCounter, setCartCounter] = useState(0)
     const [total, setTotal] = useState(0)
 
+    const isInCart = (id) => {
+      console.log(cartList);
+      return cartList.some((item) => item.id === id)
+    }
+
     const addToCart = (item) => {
       let product = isInCart(item.id)
-      if (!product) {
-        let TotalPrice = item.price * item.quantity
-        setCartCounter(cartCounter + item.quantity)
-        setTotal(total + TotalPrice)
-        setCartList([...cartList, item]);
-      }
+      console.log(product)
+      if (product) {
+        console.log("entro en el if") 
+        cartList.map((prod) => prod.id === item.id && (prod.quantity += item.quantity))
+          let totalPrice = item.price * item.quantity 
+          setTotal(total + totalPrice)
+          setCartCounter(cartCounter + item.quantity)
+      } else {
+          console.log("ta entrando aca?")
+          let TotalPrice = item.price * item.quantity
+          setCartCounter(cartCounter + item.quantity)
+          setTotal(total + TotalPrice)
+          setCartList([...cartList, item])
+        }
     }
 
     const removeFromCart = (id) => {
@@ -35,11 +48,6 @@ export default function CartContextProvider({children}) {
       setCartList([]);
       setTotal(0);
     }
-
-    const isInCart = (id) => {
-      return cartList.find((item) => item.id === id)
-    }
-
 
   return (
     <CartContext.Provider value={{
