@@ -5,7 +5,6 @@ import ItemCount from '../itemCount/itemCount'
 
 export default function ItemDetail(props) {
     const size ="300px";
-    console.log("props", props);
   return (
     <Container className='justify-content-center col-6'>
         <div className='justify-content-center'>
@@ -21,7 +20,7 @@ export default function ItemDetail(props) {
                     <Card.Text>
                         {props.price}
                     </Card.Text>
-                    <Row><ItemCount initial={1} stock={7}/></Row>
+                    <Row><ItemCount initial={1} stock={7} item={props}/></Row>
                 </Card.Body>
             </Card>
         </div>
