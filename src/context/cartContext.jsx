@@ -18,13 +18,11 @@ export default function CartContextProvider({children}) {
       let product = isInCart(item.id)
       console.log(product)
       if (product) {
-        console.log("entro en el if") 
         cartList.map((prod) => prod.id === item.id && (prod.quantity += item.quantity))
           let totalPrice = item.price * item.quantity 
           setTotal(total + totalPrice)
           setCartCounter(cartCounter + item.quantity)
       } else {
-          console.log("ta entrando aca?")
           let TotalPrice = item.price * item.quantity
           setCartCounter(cartCounter + item.quantity)
           setTotal(total + TotalPrice)
