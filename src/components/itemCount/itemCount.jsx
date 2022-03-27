@@ -12,7 +12,6 @@ export default function ItemCount(props) {
     const [disabledSubs, setDisabledSubs] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
-
     const { addToCart, isInCart } = useCartContext();
     
     const handleOnClickAdd = () => {
