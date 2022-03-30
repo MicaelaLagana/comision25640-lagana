@@ -4,6 +4,7 @@ import Cart from '../../components/cart/cart';
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 
+
 export default function CartContainer() {
   const { cartList, clearCart, removeFromCart } = useCartContext();
   return (

@@ -4,7 +4,7 @@ import ItemCount from '../itemCount/itemCount'
 
 
 export default function ItemDetail(props) {
-    const size ="300px";
+    const size ="400px";
   return (
     <Container className='justify-content-center col-6'>
         <div className='justify-content-center'>
