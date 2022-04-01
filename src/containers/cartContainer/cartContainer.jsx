@@ -30,7 +30,6 @@ export default function CartContainer() {
     order.total = total
     order.items = cartList
 
-    console.log(order);
     const db = getFirestore()
     const queryCollection = collection(db, 'orders')
     addDoc(queryCollection, order)
@@ -38,7 +37,6 @@ export default function CartContainer() {
     .finally(setOrderID(counter))
 
     setFinishOrder(true);
-    clearCart();
   }
 
 const handleSubmit = (e) => {
@@ -51,7 +49,7 @@ const handleSubmit = (e) => {
   return (
     <div>
      {
-      (cartList.length > 0 && (!finishOrder)) &&  
+      (cartList.length > 0 && !(finishOrder)) &&  
       <div>
         <Row>
           <div>
@@ -80,11 +78,14 @@ const handleSubmit = (e) => {
      }
 
     {
-      finishOrder &&  
+      finishOrder &&
       <div>
+        <div>  
+          {cartList.map(item => <li key={item.id}><img src={item.image} alt="" height="50px" widht="50px"/> titulo: {item.title}, precio: {item.price}, descripción: {item.description}, cantidad: {item.quantity}</li>)}
+        </div>
         <h2>Nro de orden: {orderID}</h2>
         <div>
-            <Link to="/"><Button>Home</Button></Link>
+            <Link to="/"><Button on onClick={clearCart}>Home</Button></Link>
         </div>
       </div>
      }

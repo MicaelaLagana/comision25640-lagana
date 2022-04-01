@@ -10,15 +10,6 @@ export default function ItemDetailConainer() {
     const [item, setItem] = useState([]);
     const [loading, setLoading] = useState(true);
 
-  //   useEffect(() => {
-  //     getFetch
-  //     .then((response) => {
-  //     setItem(response.find(producto => producto.id === parseInt(id)))
-  //   })
-  //     .then(() => setLoading(false))
-  //     .catch(err => console.log(err))
-  // }, [])
-
   useEffect(() => {
     const db = getFirestore() 
     const queryDb = doc(db, 'productos', id)
@@ -28,7 +19,6 @@ export default function ItemDetailConainer() {
     .catch(err => console.log(err))
 }, [])
 
-console.log("item", item)
 
   return (
     <>

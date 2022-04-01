@@ -29,7 +29,6 @@ export default function ItemListContainer() {
         }
     }, [id])
 
-    console.log(items)
 
 return (
     <Row className="justify-content-center">

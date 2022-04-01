@@ -11,13 +11,11 @@ export default function CartContextProvider({children}) {
     const [total, setTotal] = useState(0)
 
     const isInCart = (id) => {
-      console.log(cartList);
       return cartList.some((item) => item.id === id)
     }
 
     const addToCart = (item) => {
       let product = isInCart(item.id)
-      console.log(product)
       if (product) {
         cartList.map((prod) => prod.id === item.id && (prod.quantity += item.quantity))
           let totalPrice = item.price * item.quantity 
