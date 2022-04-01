@@ -7,6 +7,7 @@ export const useCartContext = () =>  useContext(CartContext);
 export default function CartContextProvider({children}) {
     const [cartList, setCartList] = useState([]);
     const [cartCounter, setCartCounter] = useState(0)
+    const [orderID, setOrderID] = useState(0)
     const [total, setTotal] = useState(0)
 
     const isInCart = (id) => {
@@ -54,8 +55,10 @@ export default function CartContextProvider({children}) {
         clearCart,
         removeFromCart,
         isInCart,
+        setOrderID,
         cartCounter,
-        total
+        total,
+        orderID
     }}>
         {children}
     </CartContext.Provider>

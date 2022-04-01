@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap'
 import { useCartContext } from '../../context/cartContext'
 
 export default function Cart(props) {
+  
     const {total} = useCartContext();
    
   return (
