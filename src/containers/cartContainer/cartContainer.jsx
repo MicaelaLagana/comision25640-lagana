@@ -7,8 +7,9 @@ import { getFirestore, collection, addDoc } from 'firebase/firestore'
 
 
 export default function CartContainer() {
-  const { cartList, clearCart, removeFromCart, setOrderID, total, orderID } = useCartContext();
+  const { cartList, total, clearCart } = useCartContext();
   const [finishOrder, setFinishOrder] = useState(false);
+  const [orderID, setOrderID] = useState("")
   const [dataForm, setDataForm] = useState({
     name: "",
     email: "",
@@ -18,9 +19,7 @@ export default function CartContainer() {
 
 
   const createOrder = () => { 
-    let counter = orderID;
     let order = {
-      id: counter++,
       buyer: {},
       total: 0,
       items: []
@@ -33,8 +32,8 @@ export default function CartContainer() {
     const db = getFirestore()
     const queryCollection = collection(db, 'orders')
     addDoc(queryCollection, order)
+    .then(res => setOrderID(res.id))
     .catch(err => console.log(err))
-    .finally(setOrderID(counter))
 
     setFinishOrder(true);
   }
@@ -53,7 +52,7 @@ const handleSubmit = (e) => {
       <div>
         <Row>
           <div>
-            <Cart cartList={cartList} clearCart={clearCart} remove={removeFromCart}/>
+            <Cart/>
           </div>
           <div>
             <Form className='col-6 justify-content-end' 
