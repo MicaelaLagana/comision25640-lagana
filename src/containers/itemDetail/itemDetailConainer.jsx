@@ -22,13 +22,13 @@ export default function ItemDetailConainer() {
 
   return (
     <>
-        { loading ? 
-        <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-        </Spinner>
-        :
-        <ItemDetail id={item.id} title={item.title} price={item.price} image={item.image} description={item.description}/>
-        }
+      { loading ? 
+      <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+      </Spinner>
+      :
+      <ItemDetail id={item.id} title={item.title} price={item.price} image={item.image} description={item.description}/>
+      }
     </>
   )
 }

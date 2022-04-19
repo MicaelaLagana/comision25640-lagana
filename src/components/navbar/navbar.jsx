@@ -14,10 +14,10 @@ return (
           </Link>
         <Nav className="me-auto">
           <Nav.Link>
-          <Link to="category/dados"> Dados </Link>
+          <Link to="category/dices"> Dados </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to="category/manuales"> Manuales </Link>
+            <Link to="category/manuals"> Manuales </Link>
           </Nav.Link>
         </Nav>
         <Link to="cart"> <CartWidget /> </Link>

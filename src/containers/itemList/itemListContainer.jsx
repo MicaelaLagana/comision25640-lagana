@@ -1,9 +1,9 @@
 import { React, useState, useEffect } from "react";
 import ItemList from "../../components/itemList/itemList";
-import { getFetch } from "../../helpers/getFetch";
 import { Spinner, Row } from 'react-bootstrap'
 import { useParams } from "react-router-dom";
-import { getFirestore, getDocs, collection, query, where, getDocsFromCache } from 'firebase/firestore'
+import { getFirestore, getDocs, collection, query, where } from 'firebase/firestore'
+import './itemListContainer.css';
 
 export default function ItemListContainer() {
     const { id } = useParams();
@@ -13,7 +13,6 @@ export default function ItemListContainer() {
     useEffect(() => {
         if( id ){
             const db = getFirestore() 
-            const queryDbColection = collection(db, 'productos')
             const q = query( collection(db, 'productos'), where('category', '==', id) )
             getDocs(q)
             .then(resp => setItems(resp.docs.map(prod => ({ id: prod.id, ...prod.data() }))))
@@ -37,8 +36,12 @@ return (
         <span className="visually-hidden">Loading...</span>
         </Spinner>
     :
-        <ItemList items={items}/>
+        <div className="cards-container">
+            <div>
+                <ItemList items={items}/>
+            </div>
+        </div>  
     }
     </Row>
-  );
+    );
 }
